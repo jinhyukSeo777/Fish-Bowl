@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="water">
+    <img src="fish.png" alt="" class="fish">
+    <img src="cloud2.png" alt="" class="cloud">
+    <div class="moon"></div>
+  </div>
+
+  <script>
+    function CreateBubble() {
+      const water = document.querySelector(".water");
+      const bubble = document.createElement("div");
+      const size = Math.random() * 5;
+      
+      bubble.style.width = 10 + size + "px";
+      bubble.style.height = 10 + size + "px";
+      bubble.style.left = Math.random() * 100 + "%";
+      water.appendChild(bubble);
+      bubble.classList.add("bubble");
+
+      setTimeout(function() {
+        water.removeChild(bubble);
+      }, 4000);
+    }
+
+    function stars() {
+      const count = 500;
+      const body = document.querySelector("body");
+      for(let i = 0; i < count; i++) {
+        const star = document.createElement("i");
+        const x = Math.floor(Math.random() * window.innerWidth);
+        const y = Math.floor(Math.random() * window.innerHeight);
+        const duration = Math.random() * 10;
+        const size = Math.random() * 1.5;
+
+        star.style.top = y + "px";
+        star.style.left = x + "px";
+        star.style.width = 1 + size + "px";
+        star.style.height = 1 + size + "px";
+        star.style.animationDuration = 5 + duration + "s";
+        star.style.animationDelay = duration + "s";
+
+        body.appendChild(star);
+      }
+    }
+
+    setInterval(CreateBubble, 500);
+    stars();
+  </script>
+</body>
+</html>
